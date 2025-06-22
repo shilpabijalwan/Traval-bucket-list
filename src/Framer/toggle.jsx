@@ -17,6 +17,7 @@ export default function ThemeToggle() {
     localStorage.setItem("theme", newTheme);
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
+  console.log("toggleeeeeeeeeeeeeeee");
 
   return (
     <button
@@ -31,7 +32,9 @@ export default function ThemeToggle() {
         style={handle}
         layout
         transition={{ type: "spring", duration: 0.4, bounce: 0.25 }}
-      />
+      >
+        {/* {theme === "dark" ? "🌙" : "☀️"} */}
+      </motion.div>
     </button>
   );
 }
@@ -43,7 +46,7 @@ const container = {
   cursor: "pointer",
   display: "flex",
   alignItems: "center",
-  padding:3,
+  padding: 3,
   border: "2px solid #cbd5e1",
   transition: "background-color 0.3s ease",
 };
