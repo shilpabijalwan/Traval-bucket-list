@@ -1,12 +1,14 @@
-
-.dark{
-  background :#0D111C;
-  color:white
+.dark {
+  background: #0d111c;
+  color: white;
 }
-.light{
+.light {
   background-color: #ffffff;
+  color: #0d111c;
 }
-
+.shadow {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+}
 
 @keyframes logo-spin {
   from {
@@ -22,4 +24,3 @@
     animation: logo-spin infinite 20s linear;
   }
 }
-
