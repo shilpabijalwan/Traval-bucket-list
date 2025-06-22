@@ -11,6 +11,8 @@ import {
 import "leaflet/dist/leaflet.css";
 import L from "leaflet";
 import { DeleteIcon } from "../svgs/delete-icon";
+import { getTextColor } from "../utils/getTextColor";
+import { getLocationName } from "../utils/getLocationName";
 
 // Fix Leaflet icon paths for Vite
 delete L.Icon.Default.prototype._getIconUrl;
@@ -39,18 +41,6 @@ const CustomMarkerIcon = (color = "green") =>
   });
 
 // 🔍 Get place name from coordinates
-const getLocationName = async ([lat, lng]) => {
-  try {
-    const res = await fetch(
-      `https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lng}&format=json`
-    );
-    const data = await res.json();
-    return data.display_name || "Unknown location";
-  } catch (err) {
-    console.error("Reverse geocoding error:", err);
-    return "Unknown location";
-  }
-};
 
 // 📍 Track click and move
 function LocationMarker({ onSelect }) {
@@ -71,23 +61,10 @@ function ChangeView({ center }) {
   return null;
 }
 
-const getTextColor = (status) => {
-  switch (status) {
-    case "visited":
-      return "text-purple-600";
-    case "planning":
-      return "text-orange-500";
-    case "wishlist":
-      return "text-blue-600";
-    default:
-      return "text-gray-500";
-  }
-};
-
-function MapView() {
+function MapView({ savedLocations, setSavedLocations }) {
   const [userLocation, setUserLocation] = useState([20.5937, 78.9629]);
   const [locationFetched, setLocationFetched] = useState(false);
-  const [savedLocations, setSavedLocations] = useState([]);
+  // const [savedLocations, setSavedLocations] = useState([]);
   const [placeName, setPlaceName] = useState("");
   const [pendingLocation, setPendingLocation] = useState(null);
   const [statusChoice, setStatusChoice] = useState("");

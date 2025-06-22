@@ -17,7 +17,6 @@ export default function ThemeToggle() {
     localStorage.setItem("theme", newTheme);
     document.documentElement.classList.toggle("dark", newTheme === "dark");
   };
-  console.log("toggleeeeeeeeeeeeeeee");
 
   return (
     <button
