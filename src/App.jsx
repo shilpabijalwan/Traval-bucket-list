@@ -64,7 +64,7 @@ function App() {
       </header>
 
       {/* buttons */}
-      <div className="flex w-1/2 px-4 max-w-6xl mx-auto gap-6 justify-around mt-8">
+      <div className="w-full md:w-1/2 px-4 mx-auto mt-8 grid grid-cols-2 gap-5 md:flex md:flex-row md:gap-6 md:justify-around md:max-w-6xl">
         {COLORS.map((ele) => (
           <button
             data-modal-target={ele.id}
@@ -113,7 +113,7 @@ function App() {
       <div
         className={`${
           showModal ? "flex" : "hidden"
-        } fixed top-35 left-0 right-0 bottom-0 z-[1000] justify-center items-center`}
+        } fixed top-35 left-0 right-0 bottom-0 z-[1000] justify-center items-center max-sm:top-50`}
       >
         <div class="relative p-4 w-full max-w-3xl h-full">
           <div class="relative bg-white rounded-lg shadow-sm dark:bg-gray-700 max-h-[600px] min-h-[300px] overflow-y-scroll">
