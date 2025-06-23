@@ -13,6 +13,7 @@ import L from "leaflet";
 import { DeleteIcon } from "../svgs/delete-icon";
 import { getTextColor } from "../utils/getTextColor";
 import { getLocationName } from "../utils/getLocationName";
+import { COLORS } from "./constant/constants";
 
 // Fix Leaflet icon paths for Vite
 delete L.Icon.Default.prototype._getIconUrl;
@@ -190,16 +191,19 @@ function MapView({ savedLocations, setSavedLocations }) {
           <p className="text-sm mb-4">{placeName}</p>
 
           <div className="space-y-2 mb-4">
-            {["wishlist", "planning", "visited"].map((type) => (
-              <label key={type} className="flex items-center space-x-2">
+            {COLORS.map((type, ind) => (
+              <label
+                key={type.title + ind}
+                className="flex items-center space-x-2"
+              >
                 <input
                   type="radio"
                   name="status"
-                  value={type}
-                  checked={statusChoice === type}
+                  value={type.title.toLowerCase()}
+                  checked={statusChoice === type.title.toLowerCase()}
                   onChange={(e) => setStatusChoice(e.target.value)}
                 />
-                <span className="capitalize">{type}</span>
+                <span className="capitalize">{type.title}</span>
               </label>
             ))}
           </div>

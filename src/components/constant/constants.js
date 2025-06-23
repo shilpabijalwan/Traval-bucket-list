@@ -9,6 +9,6 @@ export const COLORS = [
   },
   {
     title: "Visited",
-    color: "red",
+    color: "purple",
   },
 ];
